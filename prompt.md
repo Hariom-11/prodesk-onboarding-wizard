@@ -1,0 +1,1 @@
+I have create a multi step onboarding wizard using react and all the importance source code file. I have shared with you so first you understand that after understanding the write a CSS for my multi step onboarding form, I need a minimal UI and few micro interaction and a simple registration scuessfull UI afetr submitting form
