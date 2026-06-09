@@ -3,6 +3,7 @@ function AccountDetails({
   handleChange,
   nextStep,
   prevStep,
+  error
 }) {
   return (
     <div>
@@ -32,7 +33,14 @@ function AccountDetails({
         onChange={handleChange}
       />
 
+    {error && (
+        <p className="error-message">
+          {error}
+        </p>
+      )}
+
       <div>
+        
         <button onClick={prevStep}>Back</button>
         <button onClick={nextStep}>Next</button>
       </div>

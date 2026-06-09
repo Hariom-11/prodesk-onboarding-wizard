@@ -6,7 +6,7 @@ import Review from "./components/Review";
 
 function App() {
   const [step, setStep] = useState(1);
-
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -47,6 +47,23 @@ function App() {
   );
 }
 
+const validateStep2 = () => {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(formData.email)) {
+    setError("Please enter a valid email address.");
+    return;
+  }
+
+  if (formData.password !== formData.confirmPassword) {
+    setError("Passwords do not match.");
+    return;
+  }
+
+  setError("");
+  nextStep();
+};
+
   return (
     <div className="container">
       <h1>Profile Setup</h1>
@@ -61,11 +78,12 @@ function App() {
       )}
       {step === 2 && (
         <AccountDetails
-          data={formData}
-            handleChange={handleChange}
-          nextStep={nextStep}
-           prevStep={prevStep}
-        />
+  data={formData}
+  handleChange={handleChange}
+  nextStep={validateStep2}
+  prevStep={prevStep}
+  error={error}
+/>
       )}
 
       {step === 3 && (
